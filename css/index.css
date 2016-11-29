@@ -2,7 +2,6 @@
 body{
 	font: 400 15px "Georgia, serif";
 	color: #333;
-	background: #ddd;
 	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
 }
@@ -27,6 +26,7 @@ body{
 	color: #fff;
 	font: 700 16px/50px "Georgia";
 	bottom: 0;
+	z-index: 100;
 }
 .nav_container a{
 	background: #da1485;
@@ -34,6 +34,7 @@ body{
 .nav_container input{
 	z-index: 1000;
 	opacity: 0;
+	cursor: pointer;
 }
 .nav_container input:hover + a{
 	background: #ab1c6d;
@@ -102,6 +103,99 @@ body{
 	transform: translateY(-400%);
 }
 
+/* 顶部剪头，背景 */
+.content{
+	overflow: hidden;
+	background: #fff;
+}
+
+.arrow{
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	transform: rotate(45deg) translateX(-50%);
+	left: 50%;
+	top: 0;
+	z-index: 10000;
+	margin-top: -30px;
+	box-shadow: 2px 0px 5px rgba(0,0,0,.4);
+}
+.content h2{
+	width: 50%;
+	font: 900 54px/55px "Georgia";
+	text-align: center;
+	margin: 300px auto 40px;
+	text-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+.content p{
+	width: 60%;
+	font: 400 20px/30px "Georgia";
+	margin: 20px auto;
+	text-align: center;
+	text-shadow: 1px 1px 2px rgba(0,0,0,.3);
+}
+.content:nth-child(even){
+	background: #f791ca;
+}
+.content:nth-child(even) > .arrow{
+	background: #fff;
+}
+.content:nth-child(even) > h2,
+.content:nth-child(even) > p{
+	color: #fff;
+}
+.content:nth-child(odd) > .arrow{
+	background: #f791ca;
+}
+.content:nth-child(odd) > h2,
+.content:nth-child(odd) > p{
+	color: #f791ca;
+}
+
+@keyframes movedown{
+	0%{
+		transform: translateY(200px);
+		opacity: 0;
+	}
+	50%{
+		transform: translateY(100px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+@keyframes moveup{
+	0%{
+		transform: translateY(-200px);
+		opacity: 0;
+	}
+	50%{
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+#nav_1:checked ~ .content_box #section_1 h2,
+#nav_2:checked ~ .content_box #section_2 h2,
+#nav_3:checked ~ .content_box #section_3 h2,
+#nav_4:checked ~ .content_box #section_4 h2,
+#nav_5:checked ~ .content_box #section_5 h2{
+	animation: movedown .6s ease-in-out .2s;
+}
+
+#nav_1:checked ~ .content_box #section_1 p,
+#nav_2:checked ~ .content_box #section_2 p,
+#nav_3:checked ~ .content_box #section_3 p,
+#nav_4:checked ~ .content_box #section_4 p,
+#nav_5:checked ~ .content_box #section_5 p{
+	animation: moveup .6s ease-in-out .2s;
+}
 
 
 
